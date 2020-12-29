@@ -1,8 +1,3 @@
-# Vora, Vikram
-# 1001-768-346
-# 2020-09-27
-# Assignment-01-02
-
 import numpy as np
 import pytest
 from single_layer_nn import SingleLayerNN
