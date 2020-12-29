@@ -1,8 +1,3 @@
-# Vora, Vikram
-# 1001-768-346
-# 2020-10-11
-# Assignment-02-01
-
 import numpy as np
 
 
