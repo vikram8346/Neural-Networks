@@ -1,8 +1,3 @@
-# Vora, Vikram
-# 1001-768-346
-# 2020-10-25
-# Assignment-03-02
-
 import numpy as np
 import pytest
 from multinn import MultiNN
