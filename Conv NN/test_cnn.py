@@ -1,7 +1,3 @@
-# Vora, Vikram
-# 1001-768-346
-# 2020_11_08
-# Assignment-04-02
 import pytest
 import numpy as np
 from cnn import CNN
