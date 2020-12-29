@@ -1,9 +1,3 @@
-# Vora, Vikram
-# 1001-768-346
-# 2020_11_08
-# Assignment-04-01
-
-
 # %tensorflow_version 2.x
 import tensorflow as tf
 import numpy as np
