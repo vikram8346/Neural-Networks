@@ -56,7 +56,6 @@ class SingleLayerNN(object):
         net = self.weights.dot(inp_X)
         net[net >= 0] = 1
         net[net < 0] = 0
-        # print(net)
         return net
 
     def train(self, X, Y, num_epochs=10, alpha=0.1):
@@ -70,21 +69,7 @@ class SingleLayerNN(object):
         :param alpha: Learning rate
         :return: None
         """
-        # #inp_X = np.insert(X, 0, 1, 0).T
-        # #print("shape of inp_x\n", inp_X)
-        # act_out = self.predict(X)
-        # print("act_out", act_out)
-        # Y_t=Y.T
-        # for epoch in range(num_epochs):
-        #     for elem in (0, X.shape[1]):
-        #         act_out=self.predict(X)
-        #         #tar_out=Y.T
-        #         error=np.subtract(Y[:,[elem]],act_out)
-        #         print("the error is", error)
-        #         self.weights+=  alpha*np.dot(error,X)
-        #
         X = np.insert(X, 0, 1, 0)
-        # inp_T=X.T
 
         for epoch in range(num_epochs):
             for elem in range(X.shape[1]):
@@ -114,13 +99,7 @@ class SingleLayerNN(object):
                     break
         error = (ec/c) * 100
         return error
-
-        # YA = X.predict(X)
-        # YT = Y
-        # #return 100 * (np.sum(np.any(YA != YT, axis=0)) / YA.shape[1])
-
-
-
+        #return 100 * (np.sum(np.any(YA != YT, axis=0)) / YA.shape[1])
 
 
 if __name__ == "__main__":
