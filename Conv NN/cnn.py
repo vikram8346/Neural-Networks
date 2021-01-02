@@ -1,4 +1,3 @@
-# %tensorflow_version 2.x
 import tensorflow as tf
 import numpy as np
 import tensorflow.keras as keras
@@ -84,13 +83,9 @@ class CNN(object):
         :param trainable_flag: Set trainable flag
         :return: None
         """
-        # while
         if layer_numbers is not None:
             for layer_number in layer_numbers:
-                self.model.layer[layer_number - 1] = trainable_flag  # TODO: Or .get_layer(index=layer_number).trainable
-        # else:  #Todo No need for this else block
-        #     for l_name in layer_names:
-        #         self.model.layers[l_name].trainable = trainable_flag
+                self.model.layer[layer_number - 1] = trainable_flag
 
     def get_weights_without_biases(self, layer_number=None, layer_name=""):
         """
@@ -104,7 +99,7 @@ class CNN(object):
           weights then None should be returned.
          """
         if layer_number is not None:
-            if layer_number > 0:  # TODO Changes
+            if layer_number > 0:
                 return self.model.get_layer(index=layer_number - 1).get_weights()[0]
             elif layer_number < 0:
                 return self.model.get_layer(index=layer_number).get_weights()[0]
@@ -133,8 +128,6 @@ class CNN(object):
                 return None
         elif layer_name is not None:
             return self.model.get_layer(name=layer_name).get_weights()[1]
-        # else:             #TODO No need for this else block
-        #     return None
 
     def set_weights_without_biases(self, weights, layer_number=None, layer_name=""):
         """
@@ -157,8 +150,6 @@ class CNN(object):
         elif layer_name is not None:
             return self.model.get_layer(name=layer_name).set_weights(
                 [weights, self.get_biases(layer_number, layer_name)])
-        # else:   #TODO No need for this else block
-        #     return None
 
     def set_biases(self, biases, layer_number=None, layer_name=""):
         """
@@ -188,9 +179,7 @@ class CNN(object):
         This function removes a layer from the model.
         :return: removed layer
         """
-        # TODO Changes required
         self.model = keras.models.Sequential(self.model.layers)
-        # self.model.add(self.model.layers)
         return self.model.pop()
 
     def load_a_model(self, model_name="", model_file_name=""):
@@ -202,8 +191,6 @@ class CNN(object):
          model_file_name are specified, model_name takes precedence).
         :return: model
         """
-        # TODO Change, Changes required
-
         if model_name == 'VGG16':
             self.model = keras.Sequential()
             vgg16 = keras.applications.VGG19()
@@ -249,7 +236,6 @@ class CNN(object):
         "accuracy", "mse".
         :return: none
         """
-        # TODO Changes
         if metric == 'accuracy' or metric == 'mse':
             self.metric = metric
 
@@ -299,7 +285,7 @@ class CNN(object):
          """
         self.model.compile(optimizer=self.optimizer, loss=self.loss, metrics=self.metric)
         history = self.model.fit(x=X_train, y=y_train, batch_size=batch_size, epochs=num_epochs,
-                                 verbose=2)  # TODO Verbose is optional, may be removed
+                                 verbose=2)
         return history.history['loss']
 
 
