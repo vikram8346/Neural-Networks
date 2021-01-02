@@ -1,4 +1,3 @@
-#%tensorflow_version 2.x
 import tensorflow as tf
 import numpy as np
 
@@ -21,10 +20,7 @@ class MultiNN(object):
         "Linear", "Relu","Sigmoid".
          :return: None
          """
-        #tf.keras.layers.Dense(num_nodes, activation=transfer_function)
-        #self.weights.append(tf.Variable(tf.random.normal((self.weights[-1].shape[1], num_nodes))))
         self.weights.append(np.random.randn(self.input_dimension, num_nodes))
-        #self.biases.append(tf.Variable(tf.random.normal((num_nodes,))))
         self.biases.append(np.random.randn(num_nodes))
         self.transferfunction.append(transfer_function)
         self.input_dimension = num_nodes
@@ -119,15 +115,8 @@ class MultiNN(object):
          """
         batch_split = tf.data.Dataset.from_tensor_slices((X_train, y_train))
         batch_split = batch_split.batch(batch_size)
-        #print("batch split:",batch_split)
-        # r, c = inp_X.shape
         for epoch in range(num_epochs):
             for step, (i,j) in enumerate(batch_split):
-            #for elem in range(c//batch_size):
-                # s = elem*batch_size
-                # e = s+batch_size
-                # inp_batch = X_train[s:e]
-                # out_batch = y_train[s:e]
                 with tf.GradientTape() as tape:
                     predictions = self.predict(i)
                     loss = self.calculate_loss(j, predictions)
@@ -149,7 +138,6 @@ class MultiNN(object):
         :return percent_error
         """
         pred_out = np.argmax(self.predict(X), axis=1)
-        #print("pred_out:",pred_out.shape)
         ec=0
         for i in range(pred_out.shape[0]):
             if not tf.math.equal(pred_out[i], y[i]):
