@@ -7,7 +7,6 @@ import os
 def test_add_input_layer():
     model = CNN()
     out = model.add_input_layer(shape=(256, 256, 3), name="input0")
-    # no tests for this?
     assert True
 
 
@@ -116,7 +115,6 @@ def test_get_weights_without_biases_3():
         kernel_size = np.random.randint(3, 9)
         my_cnn.append_dense_layer(num_nodes=number_of_nodes)
         actual = my_cnn.get_weights_without_biases(layer_number=k + number_of_conv_layers + 4)
-        # assert actual.shape == (previous_nodes, number_of_nodes)
         previous_nodes = number_of_nodes
 
 
@@ -198,7 +196,6 @@ def test_load_and_save_model():
     # Note: This test may take a long time to load the data
     my_cnn = CNN()
     my_cnn.load_a_model(model_name="VGG19")
-    # my_cnn.append_dense_layer(num_nodes=10)
     w = my_cnn.get_weights_without_biases(layer_name="block5_conv4")
     assert w.shape == (3, 3, 512, 512)
     w = my_cnn.get_weights_without_biases(layer_number=-1)
@@ -217,11 +214,9 @@ def test_load_and_save_model():
 
 
 def test_predict():
-    # some of these may be duplicated
     X = np.float32([[0.1, 0.2, 0.3, 0.4, 0.5, -0.1, -0.2, -0.3, -0.4, -0.5]])
     X = np.float32([[0.1, 0.2, 0.3, 0.4, 0.5, 0, 0, 0, 0, 0]])
     X = np.float32([np.linspace(0, 10, num=10)])
-    # X = np.float32([[0.1, 0.2]])
     my_cnn = CNN()
     my_cnn.add_input_layer(shape=(10,), name="input0")
     my_cnn.append_dense_layer(num_nodes=5, activation='linear', name="layer1")
@@ -232,8 +227,6 @@ def test_predict():
     b_set = np.full_like(b, 2)
     b_set[0] = b_set[0] * 2
     my_cnn.set_biases(b_set, layer_name="layer1")
-
-    # my_cnn.append_dense_layer(num_nodes=5, activation='linear', name="layer12")
     actual = my_cnn.predict(X)
     assert np.array_equal(actual, np.array([[104., 102., 102., 102., 102.]]))
 
