@@ -96,7 +96,7 @@ def test_train_hardlim_delta():
     for i in range(10):
         model = LinearAssociator(input_dimensions=input_dimensions, number_of_nodes=number_of_nodes,
                         transfer_function="Hard_limit")
-        model.initialize_weights(seed=i+1) #Changing seed value to 1 instead of i+1 passes all the test cases. The test case also fails when the value of seed is 5,8,10 (i.e. when i=4,7,10).
+        model.initialize_weights(seed=i+1)
         X_train = np.random.randn(input_dimensions, 100)
         out = model.predict(X_train)
         model.set_weights(np.random.randn(*model.get_weights().shape))
