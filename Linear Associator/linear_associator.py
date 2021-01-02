@@ -54,7 +54,6 @@ class LinearAssociator(object):
         :param X: Array of input [input_dimensions,n_samples].
         :return: Array of model outputs [number_of_nodes ,n_samples]. This array is a numerical array.
         """
-        # inp_X = np.insert(X, 0, 1, 0)
         if self.transfer_function.lower() == 'linear':
             net = self.weights.dot(X)
             return net
@@ -64,7 +63,6 @@ class LinearAssociator(object):
             net[mask] = 1
             net[~mask] = 0
             return net
-        # print(net)
 
     def fit_pseudo_inverse(self, X, y):
         """
@@ -96,14 +94,8 @@ class LinearAssociator(object):
         out_batch = np.split(y, batch_size, 1)
         if learning.lower() == 'delta':
             for epoch in range(num_epochs):
-                # for elem in range(r-1//batch_size+1):
                 for elem in range(c // batch_size):
-                    # s=i*batch_size
-                    # e=s+batch_size
                     net_val = self.predict(inp_batch[elem])
-                    # net_val=self.predict(X)[s:e] #Transpose?
-                    # inp_batch=X[s:e]
-                    # out_batch=y[s:e] #Transpose?
                     error = np.subtract(out_batch[elem], net_val)
                     self.weights = np.add(self.weights, alpha * (error.dot(inp_batch[elem].T)))
         elif learning.lower() == 'filtered':
