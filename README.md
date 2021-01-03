@@ -1,3 +1,5 @@
+## Neural Networks Tutorials
+
 While pursuing the topics of Neural Networks and Deep Learning, these are some of the tutorials which I did, as part of those topics.
 
 **Installation:**
@@ -5,6 +7,7 @@ While pursuing the topics of Neural Networks and Deep Learning, these are some o
 *	Install python>=3.0 or use PyCharm IDE
 *	Create a new directory and setup a  conda environment.
 *	On the project directory, do **pip install –r requirements.txt**
+
 
 
 **1.	Single Layer Neural Networks:**
