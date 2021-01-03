@@ -4,9 +4,14 @@ While pursuing the topics of Neural Networks and Deep Learning, these are some o
 
 **Installation:**
 
-*	Install python>=3.0 or use PyCharm IDE
-*	Create a new directory and setup a  conda environment.
-*	On the project directory, do **pip install –r requirements.txt**
+*	Install python>=3.0
+*	setup a conda environment and install the required packages:
+
+    **conda create --name *env-name* python=3.6**
+    
+    **conda activate *env-name***
+    
+    **pip install –r requirements.txt**
 
 
 
